@@ -7,7 +7,7 @@ import myEpicNft from "./utils/MyEpicNFT.json";
 const TWITTER_HANDLE = "Donmario";
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const OPENSEA_LINK = "";
-const TOTAL_MINT_COUNT = 50;
+const TOTAL_MINT_COUNT = 30;
 
 const CONTRACT_ADDRESS = "0x5EdF44f8d63bD38Ac74FbEBB3a46673da8f4540D";
 
@@ -102,7 +102,7 @@ const App = () => {
 
         let totalNFTsMinted = await connectedContract.mintedNFTs();
         console.log(totalNFTsMinted);
-        // setMintedNFTs(totalNFTsMinted);
+        setMintedNFTs(totalNFTsMinted.toNumber());
         console.log("we have updated the amount of NFTs minted");
       } else {
         console.log("Ethereum object doesn't exist");
@@ -174,7 +174,9 @@ const App = () => {
           {currentAccount === ""
             ? renderNotConnectedContainer()
             : renderMintUi()}
-          <p className="sub-text">Total NFTS minted so far {mintedNFTs}/50</p>
+          <p className="sub-text">
+            Total NFTs minted so far {mintedNFTs}/{TOTAL_MINT_COUNT}
+          </p>
         </div>
         {/* <button className="cta-button connect-wallet-button">
           <a href={OPENSEA_LINK}></a>
